@@ -113,7 +113,7 @@ http://localhost:3000
 
 ### Home Page
 
-![Home Page](Screenshots/home.png)
+![Home Page](Screenshots/Home.png)
 
 ---
 ### Register Page
