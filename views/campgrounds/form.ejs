@@ -1,0 +1,86 @@
+<% layout('layeouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">New Campground</h1>
+  <div class="col-md-6 offset-md-3">
+    <form action="/campgrounds" method="post" novalidate class="validate-form" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title for Campground :</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="campground[title]"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="city">City of Campground :</label>
+        <input
+          class="form-control"
+          type="text"
+          id="city"
+          name="campground[city]"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="state">state of Campground :</label>
+        <input
+          class="form-control"
+          type="text"
+          id="state"
+          name="campground[state]"
+          required
+        />
+      </div>
+
+      <div class="mb-3 custom-file">
+        <label for="campImages" class="form-label custom-file-label">Upload Campground Images</label>
+        <input class="form-control custom-file-input" type="file" id="campImages" multiple name="image">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price">Campground Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            type="number"
+            id="price"
+            name="campground[price]"
+            class="form-control"
+            placeholder="0.00"
+            aria-label="price"
+            aria-describedby="price-label"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description"
+          >Description of Campground :</label
+        >
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="campground[description]"
+          required
+        ></textarea>
+      </div>
+
+      <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+
+    <a href="/campgrounds"
+      ><button type="button" class="btn btn-info my-3">
+        All Campgrounds
+      </button></a
+    >
+  </div>
+</div>
+
+

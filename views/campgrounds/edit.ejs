@@ -1,0 +1,61 @@
+<% layout('layeouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-md-6 offset-md-3">
+    <form action="/campgrounds/<%=req_info._id%>?_method=PUT" method="post" novalidate 
+    class="validate-form" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title for Campground :</label>
+        <input class="form-control" type="text" id="title" name="campground[title]" value="<%=req_info.title %>" required/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="city">City of Campground :</label>
+        <input class="form-control" type="text" id="city" name="campground[city]" value="<%= req_info.city %>" required/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="state">state of Campground :</label>
+        <input class="form-control" type="text" id="state" name="campground[state]" value="<%= req_info.state %>" required/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price">Campground Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input type="text" id="price" name="campground[price]" class="form-control" placeholder="0.00" aria-label="price" aria-describedby="price-label" value="<%=req_info.price%>" required>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label" for="description">Description of Campground :</label>
+        <textarea class="form-control" type="text" id="description" name="campground[description]" required> <%= req_info.description %> </textarea>
+      </div>
+
+      <div class="mb-3 custom-file">
+        <label for="campImages" class="form-label custom-file-label">Upload Campground Images</label>
+        <input class="form-control custom-file-input" type="file" id="campImages" multiple name="image">
+      </div>
+
+        
+      <div class="row row-cols-2 row-cols-md-3 g-3 mb-4">
+        <% req_info.images.forEach((image, i) => { %>
+          <div class="col text-center d-flex flex-column align-items-center">
+            
+            <img src="<%= image.thumbnail %>" alt="" class="img-thumbnail mb-2" style="max-height: 150px; object-fit: cover;">
+      
+            <div class="form-check d-flex justify-content-center align-items-center mt-auto">
+              <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=image.filename%>" class="form-check-input me-2">
+              <label for="image-<%=i%>" class="form-check-label text-secondary fw-bold">Delete ?</label>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <button class="btn btn-info" type="submit">Save Update</button>
+    </form>
+
+    <a href="/campgrounds/<%=req_info._id%>"><button type="button" class="btn btn-warning my-3" >Cancel Update</button></a>
+  </div>
+</div>
